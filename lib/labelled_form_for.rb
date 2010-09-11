@@ -1,1 +1,2 @@
-# LabelledFormFor
+require 'labelled_form_for/labelled_form_builder'
+require 'labelled_form_for/action_view'
