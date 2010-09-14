@@ -8,18 +8,19 @@ class LabelledFormBuilder < ActionView::Helpers::FormBuilder
   helpers.each do |selector|
     define_method selector do |field, *args|
       options = args.last.is_a?(Hash) ? args.pop : {}
-      @template.content_tag :div, :class => "form_line" do
-        (
-          label field,
+      if options[:label] == false
+        super
+      else
+        @template.content_tag :div, :class => "form_line" do
+          label(field,
             [
               options.delete(:prepend_to_label),
               options.delete(:label_text)  || field ,
               options.delete(:append_to_label)
-            ].join(' ')
-        ) + super
+            ].join(' ')) + super
+        end
       end
     end
   end
 
 end
-
