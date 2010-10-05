@@ -11,7 +11,7 @@ class LabelledFormBuilder < ActionView::Helpers::FormBuilder
       if options[:label] == false
         super
       else
-        @template.content_tag :div, :class => "form_line" do
+        @template.content_tag :div, :class => "field" do
           label(field,
             [
               options.delete(:prepend_to_label),
